@@ -113,7 +113,7 @@ By the end of this project, learners should be able to setup a LAMP Stack and de
 
 - Conclusion
 
-# Getting Started With LAMP Stack
+## Creating A LAMP Stack
 
 #### Step 1: Launch an Ubuntu Instance on AWS Console and SSH Into From Your Terminal
 
@@ -132,15 +132,21 @@ By the end of this project, learners should be able to setup a LAMP Stack and de
 **Important**: Be sure to launch an Ubuntu 20.04LTS instance. Also keep your .pem key safely. Once it is lost, you will not be able to ssh into the instance again. Also, anyone with the key can have access to your instance
 
 **SSH into your ubuntu instance**
-- For windows, open command promot or powershell
 
-      ssh -i path/to/.pem ubuntu@public_ip_address
+SSH is an encrypted protocol used to administer and communicate with servers. An SSH key is used to access a remote server through an SSH connection. 
+Remember we created a `lamp.pem` key while creating our instance, now we will use this key to connect to our instance.
 
-- For mac and linux, open a terminal
+- For windows operating system, open command promot or powershell and paste the code below. 
 
-      ssh -i path/to/.pem ubuntu@public_ip_address
+      ssh -i path/to/lamp.pem ubuntu@public_ip_address
 
-**Note:** path/to/.pem should be replaced with the path to the ssh .pem key the was download when creating the instance and public_ip_address should be replaced the actual ubuntu instance public ip address
+- For mac and linux operating system, open a terminal and paste the code below
+
+      ssh -i path/to/lamp.pem ubuntu@public_ip_address
+
+***Make sure you specifythe actual path to your lamp.pem key that was download when creating the instance and public_ip_address should be replaced the actual ubuntu instance public ip address***
+
+**Note:** path/to/.pem should be replaced with the path to the ssh .pem key 
 
 #### Step 2: Installating Apache
 In the previous step, we were able to create and instance and ssh into the instance. In this step, we will install apache webserver.
