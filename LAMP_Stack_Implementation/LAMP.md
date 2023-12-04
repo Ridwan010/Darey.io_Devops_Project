@@ -36,6 +36,7 @@ Understanding the concept of a web stack is fundamental for anyone involved in w
 
 
 There are different types of web stack and they all perform different function. There are different types of web stacks which are;
+
 **LAMP Stack**
 - Components: Linux (Operating System), Apache (Web Server), MySQL (Database), PHP (Programming Language).
 - Importance: LAMP has been a traditional and widely-used stack for building dynamic web applications. It provides a robust, open-source solution for hosting and serving web content.
@@ -54,7 +55,7 @@ There are different types of web stack and they all perform different function. 
 
 These stacks all have diferent function. In this project, we will be focusing on LAMP Stack
 
-**i. LAMP Stack**
+### **LAMP Stack**
 
 The word LAMP refers to a group of open source software installed together which can be used to host web applications. The stack consists of four software technologies which are linux, a database, an hypertext processor and a web sever that is not capable of load balancing and reverse proxy
 ***LAMP*** meaning Linux; a unix operating system, Apache; a web server, Mysql; a database and PHP; an Hypertext preprocessor.
