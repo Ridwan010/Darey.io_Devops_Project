@@ -157,7 +157,7 @@ Install apache web server
 
     sudo apt install apache2 -y
 Allow firewall for apache
-
+![Apache](Images/lamp/install-apache.PNG)
     sudo ufw allow in "Apache"
 NOTE: The step above will allow firewall for apache once it is enabled, it is important we allow firewall for ssh. ssh runs on port 22, if firewall is not allowed for ssh running on port 22, connection to the ubuntu instance via ssh will be permanently denied
 
@@ -166,15 +166,15 @@ NOTE: The step above will allow firewall for apache once it is enabled, it is im
 To check if apache web server has been installed successfully
 
     sudo systemctl status apache2
-![apache](images/Apache.jpg)
+![apache](Images/lamp/apache-status.PNG)
 
 By default, apache runs on port 80, so we need to allow incoming traffic on that port. We need to open security group and edit inbound rules in order to do that.
-![Security Group]()
+![Security Group](Images/lamp/inboundrules.PNG)
 
 To access your web server on your browser
 
     http://ubuntu_instance_public_ip_address
-![apache](images/small_apache_default_1804.png)
+![apache](Images/lamp/apache-default.PNG)
 
 The Apache default page above will displayed. 
 You can check your ubuntu instance ip address from your aws console from the EC2 instance service management or input the command below
@@ -183,24 +183,67 @@ You can check your ubuntu instance ip address from your aws console from the EC2
 
 #### Step 3: Installating Mysql
 
-In step 1 above, we were able to install apache web server successfully. In this step, mysql will be installed as a database to store data for our web application.
+In the previous, we were able to install apache web server successfully. In this step, mysql will be installed as a database to store data for our web application.
 apt repositories has been updated in the previous step, mysql should be installed directly
 
     sudo apt install mysql-server
-Secure mysql installation 
 
-    sudo mysql_secure_installation
+![mysql install](Images/lamp/install-mysql.PNG)
+
 Check if mysql has been successfully installed
 
     sudo systemctl status mysql 
 
-![mysql](images/Mysql.jpg)
-Log into mysql as the root user
+![mysql status](Images/lamp/mysql-status.PNG)
+
+Let's log in to mysql server as the root user
 
     sudo mysql
+
+We have been able to log into mysql server successfully, but our database is not yet secure, we need to run mysql security installation script, but before that we need to create a password for the root user, if not the root user might be unable to login to mysql after runnig the script.
+
+Still logged in as the root user, let,s create a password
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MypassKey1.'
+
+You can now exit mysql prompt
+
+    mysql>exit
+    
+Now let's secure mysql installation 
+
+    sudo mysql_secure_installation
+
+Running the installation script above, will ask for a password validation from the root user. We need to validate it using the password we created inside mysql prompt earlier
+```
+Securing the MySQL server deployment.
+
+Enter password for user root:
+```
+This will then ask you to validate password component. When MySQL prompts you to validate a password component, this component checks the strength of passwords and enforces a password policy. 
+Choosing "No" allows you to set up a password policy that aligns with your organization's security requirements. It may involve configuring the password complexity rules, length, expiration policies, and other parameters according to your specific needs.It is recommended to select any other key for no
+```
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No:
+```
+Follow the image below for other optional steps
+
+![Secure Installation](Images/lamp/mysql-installation.PNG)
+
+Log into mysql as the root user
+
+    sudo mysql -u root -p
+The `-u` flag tells mysql which user is trying to login to the server and the `-p` flag show a prompt for passowrd on executing the command.
 Log out of mysql
 
     mysql>exit
+
+![Mysql login](Images/lamp/mysql-login.PNG)
+
 
 #### Step 4: Installing PHP
 
