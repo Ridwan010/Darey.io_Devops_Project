@@ -1,10 +1,10 @@
-# Web Stack Implementation (LAMP Stack) In AWS
+# Web Stack Implementation Using AWS
 
 # Introduction
 
-In the constantly changing world of software development, picking the right technology stack is crucial for the success or failure of a project. The "Web Stack" project is a program for people who want to learn how to make and launch web applications. This course teaches you how to create a type of web stack that work on all operating systems and allow users to interact with them. You will learn about the latest technology used to build these websites.
+In the constantly changing world of software development, picking the right technology stack is crucial for the success or failure of a project. The "Web Stack" project is a program for people who want to learn how to make and launch web applications. This course teaches you how to create a type of web stack that works on all operating systems and allow users to interact with them. You will learn how to setup different web development tools and frameworks can work together effectively and also how to  deploy simple and e-commerce websites using these technology stacks to build these websites.
 
-This project focuses on exploring how different web development tools and frameworks can work together effectively. It aims to teach people how to create a LAMP stack and deploy static pages onto the stack. We will begin by looking at the main parts and structure of this new web system. Through this, learners will learn about the benefits and possibilities of using these different software technologies together.
+This project focuses on how to create a LAMP stack and deploy static pages onto the stack. We will begin by looking at the main parts and structure of this new web system. Through this, learners will learn about the benefits and possibilities of using these different software technologies together.
 
 
 ### What is Web Stack ?
