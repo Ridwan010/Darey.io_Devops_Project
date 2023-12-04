@@ -9,6 +9,19 @@ This project focuses on how to create a LAMP stack and deploy static pages onto 
 
 ### What is Web Stack ?
 A simple meaning of web in any interconnected things. A stack on the other hand is a collection of similar things or objects which are together.
+A web stack, often referred to as a technology stack or simply a "stack," is a collection of software technologies and tools that work together to enable the development and deployment of web applications. It includes various layers, each serving a specific purpose in the web development process. The primary components of a web stack typically includes the operating system, web server, database, and programming language/framework.
+
+### Components of a Web Stack
+**Operating System (OS)**: This is the foundational layer of the stack and represents the underlying software that manages hardware resources. Common choices include Linux, Windows, or macOS.
+
+**Web Server**: The web server handles HTTP requests from clients (usually web browsers) and serves web pages in response. Popular web servers include Apache, Nginx, and Microsoft Internet Information Services (IIS).
+
+**Database**: The database layer manages and stores the application's data. There are two main types of databases: relational databases (e.g., MySQL, PostgreSQL) and NoSQL databases (e.g., MongoDB, CouchDB). The choice depends on the specific requirements of the application.
+
+**Programming Language/Framework**: This layer involves the programming language and/or framework used to build the web application. Examples include PHP, Python, Ruby, JavaScript (Node.js), and frameworks like Django, Ruby on Rails, Flask, Express.js, etc.
+
+**Additional Components**: Depending on the complexity of the application, additional components might be included, such as caching mechanisms (e.g., Redis), load balancers, and front-end libraries or frameworks (e.g., React.js, Angular, Vue.js).
+
 A web stack is a collection of similar things or object (softwares) which work together in an interconnected way to run a function. There are different types of web stack and they all perform different function. There are different types of web stacks which are;
 - **LAMP** (Linux, Apache, MySQL, PHP or Python, or Perl)
 - **LEMP** (Linux, Nginx, MySQL, PHP or Python, or Perl)
