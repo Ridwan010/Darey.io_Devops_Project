@@ -146,17 +146,16 @@ Remember we created a `lamp.pem` key while creating our instance, now we will us
 
 ***Make sure you specifythe actual path to your lamp.pem key that was download when creating the instance and public_ip_address should be replaced the actual ubuntu instance public ip address***
 
-**Note:** path/to/.pem should be replaced with the path to the ssh .pem key 
 
 #### Step 2: Installating Apache
-In the previous step, we were able to create and instance and ssh into the instance. In this step, we will install apache webserver.
+In the previous step, we were able to create and instance and ssh into the instance with our key, now let's install apache webserver. Follow the steps below for successful installation
 
 update package lists and apt repositories
 
-    sudo apt update
+    sudo apt update -y
 Install apache web server
 
-    sudo apt install apache2
+    sudo apt install apache2 -y
 Allow firewall for apache
 
     sudo ufw allow in "Apache"
@@ -168,6 +167,9 @@ To check if apache web server has been installed successfully
 
     sudo systemctl status apache2
 ![apache](images/Apache.jpg)
+
+By default, apache runs on port 80, so we need to allow incoming traffic on that port. We need to open security group and edit inbound rules in order to do that.
+![Security Group]()
 
 To access your web server on your browser
 
