@@ -421,10 +421,13 @@ To output below will be shown
     3 rows in set (0.000 sec)
 Exit mysql shell.
 
-In the /var/www/html we need to edit our index.php file
+![Darey](Images/lamp/darey-database.PNG)
 
-    sudo nano /var/www/html/index.php
-Paste the content below 
+In the /var/www/html/darey.io we need to edit our index.php file
+
+    sudo nano /var/www/html/darey.io/index.php
+
+Paste the code snippet below in the `index.php` file
 
     <?php
     $user = "darey";
@@ -444,7 +447,16 @@ Paste the content below
     die();
     }
 Save and close the file
+
+![PHP](Images/lamp/php-update.PNG)
+
+Reload apache 
+
+    sudo systemctl reload apache2
+
 Check you web browser with your ubuntu instance ip address to see apache serving php with the contents in the database displayed.
+
+![Devops List](Images/lamp/devops-list.PNG)
 
 ## Task For This Project
 i. Launch an ubuntu instance and ssh into it.
