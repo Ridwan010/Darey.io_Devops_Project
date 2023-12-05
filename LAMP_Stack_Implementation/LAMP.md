@@ -144,6 +144,8 @@ Remember we created a `lamp.pem` key while creating our instance, now we will us
 
       ssh -i path/to/lamp.pem ubuntu@public_ip_address
 
+[SSH](Images/lamp/instance-connect)
+
 ***Make sure you specifythe actual path to your lamp.pem key that was download when creating the instance and public_ip_address should be replaced the actual ubuntu instance public ip address***
 
 
@@ -247,25 +249,26 @@ Log out of mysql
 
 #### Step 4: Installing PHP
 
-So far, we have been created an instance, installed Apache and Mysql. The last software technology of the LAMP stack is PHP will be installed in this step
+So far, we have been created an EC2 instance, installed Apache and Mysql. The last software of the LAMP stack is PHP will be installed in this step.
 
     sudo apt install php libapache2-mod-php php-mysql
 Check for the successful installation of php
 
     php -v
 
-#### Step 5: Configuring Apache Web Server To Serve As A Virtual Host 
+![Php Version](Images/lamp/php-version.PNG)
 
- We need to create a  directory for our codes to be hosted at the location "/var/www/html/darey.io", "darey.io" can be named any name. The directory will contain the php codes which apache will serve. The codes are not limited to php codes but also html, css, javascript e.t.c. . Apache web server is smart enough to know this location and serve it with the help of its configuration file.
+#### Step 5: Configuring Apache Web Server To Serve As A Virtual Host 
+We want to deploy a static page on our stack, therefore configuring apache to serve as a virtual host is mandator. We need to create a  directory for our codes to be hosted at the location `/var/www/html/darey.io`, "darey.io" can be named any name. The directory will contain the php codes which apache will serve. The codes are not limited to php codes but also html, css, javascript e.t.c. . Apache web server is smart enough to know this location and serve it with the help of its configuration file.
 
     sudo mkdir /var/www/html/darey.io
 Create an simple html file which our apache will serve
 
-    sudo nano /var/www/darey.io/index.html
+    sudo nano /var/www/html/darey.io/index.html
 It should have the content below
 
 
-    <h1>Welcone to Darey.io, Apache works</h1>
+    <h1>Welcome to Darey.io, Apache works</h1>
 darey.io is the directory created which will contain our php code
 Assign ownership of the directory with the user
 
@@ -275,9 +278,9 @@ Create a new configuration file that will replace apache default configuration f
 
     sudo nano /etc/apache2/sites-available/darey_io.conf
 
-darey_io contains the below
+Paste the code snippet below in darey_io.conf
 
-    #<VirtualHost *:80>
+    <VirtualHost *:80>
           ServerName localhost
           ServerAlias localhost
           ServerAdmin webmaster@localhost
@@ -290,7 +293,7 @@ Enable the new .conf and disabled default.conf file
 
     sudo a2ensite /etc/apache2/sites-available/darey_io.conf
 
-    sudo a2dissite /etc/apache2/sites-available/000-default
+    sudo a2dissite /etc/apache2/sites-available/000-default.conf
 Reload apache conf. file to make sure the file has no errors
 
     sudo apache2ctl configtest
@@ -303,17 +306,22 @@ Check your web browser.
 
     http://ubuntu_instance_public_ip_address
 
+![Apache Works](Images/lamp/apache-works)
+
 #### Step 6: Modifying Directory Index To Serve php files
 
-By default, in the index.html comes before index.php file in /etc/apache2/mods-enabled/dir.conf. As a result of this, apache will always serve html files before php file. The directory index needs to be modified to apache read php files
+By default, in the index.html comes before index.php file in `/etc/apache2/mods-enabled/dir.conf`. As a result of this, apache will always serve html files before php file. The directory index needs to be modified to apache read php files
 
 
     sudo nano /etc/apache2/mods-enabled/dir.conf
-Change the arrangement if index.html and index.php
+Change the arrangement of index.html and index.php. index.php should be first on the list of directory index
 
     <IfModule mod_dir.c>
         DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
     </IfModule>
+
+![Directory Index](Images/lamp/directory-index)
+
 Save and close the file then reload apache
 
     sudo systemctl reload apache2
@@ -321,20 +329,25 @@ Save and close the file then reload apache
 #### Step 7: Testing PHP with Apache 
 
 Replace the index.html file in /var/www/html/darey.io with index.php with a simple php info.
-
+```
+    sudo rm /var/www/html/darey.io/index.php
     sudo nano /var/www/html/darey.io/index.php
+```
 Paste the contents below
 
     <?php
     phpinfo();
 Save and close the file 
+
 You can use ubuntu instance public ip address to access the php file served by apache from your web browser 
-![php](images/phpinfo.png)
+
+![php](Images/lamp/php-info.PNG)
+
 The default page above will be displayed.
 
 #### Step 8: Testing PHP and Mysql with Apache (LAMP Stack)
 
-In the previous step, php was tested with apache by using apache to serve a php file. In the step mysql database will be connected to php and web served by apache.
+In the previous step, php was tested with apache by using apache to serve a default php page. Let's do ma
 The first to do is to create a database with datas
 
 Log into mysql as root user 
