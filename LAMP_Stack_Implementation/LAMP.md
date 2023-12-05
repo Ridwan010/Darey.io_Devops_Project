@@ -347,14 +347,15 @@ The default page above will be displayed.
 
 #### Step 8: Testing PHP and Mysql with Apache (LAMP Stack)
 
-In the previous step, php was tested with apache by using apache to serve a default php page. Let's do ma
-The first to do is to create a database with datas
+In the previous step, php was tested with apache by using apache to serve a default php page. So have been able to use three out of the four technology softwares that makes up our stack. Let's use our LAMP stack
 
-Log into mysql as root user 
+The first to do is to create a new user and database for mysql server.
 
-    sudo mysql 
+Log into mysql as root user. Make sure you enter the password we created in `step 3` in order to gain access to the database.
 
-***In the mysql shell***
+    sudo mysql -u root -p
+
+***In the mysql prompt***
 Create a database called darey_io
 
     CREATE DATABASE darey_io;
@@ -364,13 +365,21 @@ Create a new user called ***darey*** with password ***A different username or pa
     CREATE USER 'darey'@'%' IDENTIFIED WITH mysql_native_password BY 'Ab123456789';
 Grant 'darey' all permissions 
 
-    GRANT ALL ON root.* TO 'darey'@'%';
+    GRANT ALL ON darey_io.* TO 'darey'@'%';
 Log out of mysql
 
     exit
-Log in to mysql as user 'darey'
+    
+![Root](Images/lamp/root-database.PNG)
 
-    mysql -u darey -p Aa123456789
+Log in to mysql as user `darey`
+
+    mysql -u darey -p 
+Enter the passoword we created for `darey`   
+
+Create a new database called `darey_io`
+  
+    CREATE DATABASE darey_io;
 
 Checkout the database created as the root user
 
