@@ -458,16 +458,14 @@ Check you web browser with your ubuntu instance ip address to see apache serving
 
 ![Devops List](Images/lamp/devops-list.PNG)
 
-## Task For This Project
-i. Launch an ubuntu instance and ssh into it.
-ii. Set up a lamp stack
-iii. Download a simple bootstrap code to host on your Stack. Use <wget https://github.com/startbootstrap/startbootstrap-agency/archive/gh-pages.zip>
-iv. unzip the folder host it on your LAMP Stack 
+## Task 
 
-***Hint:*** unzip the folder with the command "unzip" if not installed, installed unzip with 
+Since you have you LAMP Stack set up, deploy a tooling website
+- Fork the tooling repository from `https://github.com/darey-io/tooling`
+- Clone the repository to `/var/www/html/darey.io`.
+- Update `DocumentRoot` line in `/etc/apache2/sites-available/darey_io.conf` with the new path to tooling website.
+- Reload apache and check you web browser to see a tooling website
 
-	sudo apt install unzip
- Then move the whole folder you unziped to your project folder and update the server block configuration file.
 
 # Best Practices of LAMP Stack
 
